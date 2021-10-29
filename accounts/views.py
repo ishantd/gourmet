@@ -1,14 +1,19 @@
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.http.response import HttpResponse
 from django.utils.encoding import force_bytes
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from accounts.models import UserProfile
 from accounts.forms import SignupForm
+from accounts.models import UserProfile
+from accounts.decorators import unauthenticated_user
 
 
 def Register(request):
@@ -43,3 +48,49 @@ def Register(request):
     else:
         form = SignupForm()
     return render(request, 'accounts/register.html', {'form': form})
+
+@unauthenticated_user
+def Login(request):
+    context = {}
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            userprofile = UserProfile.objects.get(user=user)
+            if (userprofile.email_verified == settings.EMAIL_VALIDATION) or (userprofile.email_verified):
+                login(request, user)
+                print(userprofile.creator)
+                return redirect('index')
+            else:
+                messages.error(request, 'Please confirm your email address.')
+        else:
+            messages.error(request, 'Username or password is incorrect.')
+
+    return render(request, 'accounts/login.html', context)
+
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        userprofile = UserProfile.objects.get(user=user)
+        userprofile.email_verified = True
+        userprofile.save()
+        user.save()
+        messages.success(request, 'Thank you for your email confirmation. Now you can login your account.')
+        return redirect('index')
+    else:
+        return HttpResponse('Activation link is invalid!')
+    
+@login_required(login_url='/')
+def Logout(request):
+    logout(request)
+    return redirect('index')    
