@@ -6,7 +6,7 @@
 {% endblock my_css %}
 
 {% block content %}
-    <div class="section-bg-image parallax-window text-center white ken-burn-center" data-natural-height="1080" data-natural-width="1920" data-parallax="scroll" data-image-src="../images/hd-2.jpg">
+    <div class="section-bg-image parallax-window text-center white ken-burn-center" data-natural-height="1080" data-natural-width="1920" data-parallax="scroll" data-image-src="{% static "home/images/hd-2.jpg"%}">
             <div class="container content">
                 <hr class="space" />
                 <p class="text-italic" data-anima="pulse">An explosion taste of pleasures</p>
@@ -18,7 +18,7 @@
                             <div class="img-box adv-img adv-img-half-content shadow-1" data-anima="fade-left" data-trigger="hover">
                                 <i class="fa fa-camera-retro anima"></i>
                                 <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="../images/gallery/long-9.jpg" alt="" />
+                                    <img src="{% static "home/images/gallery/long-9.jpg"%}" alt="" />
                                 </a>
                                 <div class="caption">
                                     <h2>Beef Steack</h2>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="section-bg-image white" style="background-image:url(../images/hd-portrait.jpg)">
+        <div class="section-bg-image white" style="background-image:url("{% static "home/images/hd-portrait.jpg"%}")">
             <div class="container content">
                 <div class="row">
                     <div class="col-md-3">
@@ -386,7 +386,7 @@
                 </div>
             </div>
         </div>
-        <div class="section-bg-color" style="background-image:url(../images/hd-2.jpg)">
+        <div class="section-bg-color" style="background-image:url("{% static "../images/hd-2.jpg"%}")">
             <div class="container content">
                 <div class="flexslider carousel outer-navs white" data-options="minWidth:200,itemMargin:15,numItems:2,controlNav:true,directionNav:true">
                     <ul class="slides">
