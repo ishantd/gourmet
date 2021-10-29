@@ -1,0 +1,22 @@
+.login-card {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background-position: center;
+    padding: 30px 0;
+}
+
+.login-card .login-main {
+    width: 450px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 37px rgb(8 21 66 / 5%);
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+#checkbox1 {
+    margin-left: 0;
+}
