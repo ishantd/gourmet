@@ -16,7 +16,9 @@
               </a></div>
               <div class="login-main">
 
-
+                <div class="mt-4">
+                {% include 'accounts/includes/_messages.html' %}
+                </div>
                 <form class="theme-form" method="POST" action="{% url 'login' %}" >
                 {% csrf_token %}
                   <h4>Sign in to account</h4>

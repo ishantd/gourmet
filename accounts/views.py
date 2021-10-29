@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.http.response import HttpResponse
 from django.utils.encoding import force_bytes
@@ -32,12 +33,11 @@ def Register(request):
                 'token': default_token_generator.make_token(newuser),
             })
             to_email = form.cleaned_data.get('username')
-            mail.send(
+            send_mail(
+                mail_subject,
+                message,
+                settings.EMAIL_HOST_USER,
                 [to_email],
-                subject=mail_subject,
-                sender=settings.EMAIL_HOST_USER,
-                message=message,
-                priority='now',
             )
             messages.success(request, "You've successfully registered!")
             messages.info(request,
