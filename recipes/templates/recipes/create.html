@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block my_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+{% endblock my_css %}
+
+{% block content %}
+    
+    <div class="container">
+        <div class="row">
+        <div class="col-12 text-center">
+            <h3>Create Recipe</h3>
+        </div>
+        <div class="col-6">
+            <h5>Basic Info</h5>
+
+            <form id="basic-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp">
+                    <small id="nameHelp" class="form-text text-muted">Tell us your awesome recipe name!</small>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea type="text" class="form-control" id="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="name">Time to Cook</label>
+                    <input type="text" class="form-control" id="ttc" aria-describedby="ttcHelp">
+                    <small id="ttcHelp" class="form-text text-muted">Time to cook your great dish in minutes!</small>
+                </div>
+                <div class="form-group">
+                    <label for="name">Image</label>
+                    <input type="file" class="form-control" id="image">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+{% block my_js %}{% endblock my_js %}

@@ -121,6 +121,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST_USER = 'gourmet@bestpcprices.in'
 EMAIL_BACKEND = 'django_ses.SESBackend'
+EMAIL_VALIDATION = False
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY_SECRET")

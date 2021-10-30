@@ -62,7 +62,6 @@ def Login(request):
             userprofile = UserProfile.objects.get(user=user)
             if (userprofile.email_verified == settings.EMAIL_VALIDATION) or (userprofile.email_verified):
                 login(request, user)
-                print(userprofile.creator)
                 return redirect('index')
             else:
                 messages.error(request, 'Please confirm your email address.')
