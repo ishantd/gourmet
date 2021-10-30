@@ -24,24 +24,12 @@
                     </ul>
                     <div class="nav navbar-nav navbar-right">
                     
-                        <div class="shop-menu-cnt">
+                        <div class="shop-menu-cnt pd">
                     {% if request.user.is_authenticated %}
-                            <i class="fa fa-user"></i>
-                            <div class="shop-menu">
-                                <p class="cart-buttons">
-                                    <a href="#" class="btn btn-md cart-checkout">Logout</a>
-                                    <a href="#" class="btn btn-md cart-view">My Recipes</a>
-                                </p>
-                            </div>
+                            <a href="{% url 'logout' %}" class="btn btn-md cart-view">Logout</a>
                     {% else %}
 
-                        <i class="fa fa-power-off"></i>
-                            <div class="shop-menu">
-                                <p class="cart-buttons">
-                                    <a href="{% url 'login' %}" class="btn btn-md cart-checkout">Login</a>
-                                    <a href="{% url 'register' %}" class="btn btn-md cart-view">Register</a>
-                                </p>
-                            </div>
+                        <a href="{% url 'login' %}" class="btn btn-md cart-view">Login</a>
 
                     {% endif %}
                         </div>

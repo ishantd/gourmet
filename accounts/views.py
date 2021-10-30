@@ -42,7 +42,7 @@ def Register(request):
             messages.success(request, "You've successfully registered!")
             messages.info(request,
                           "Please verify your email address, we've sent you a mail at your registered email ID.")
-            return redirect('index')
+            return redirect('login')
         else:
             print(form.errors)
     else:
