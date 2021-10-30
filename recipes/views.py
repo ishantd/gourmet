@@ -7,7 +7,7 @@ def create_recipe(request):
         description = request.POST.get('description', False)
         time_to_cook = request.POST.get('time_to_cook', False)
         image = request.FILES.get('image', False)
-        
-        print(name, description, time_to_cook, image)
+        igs = request.POST.getlist('ig_names[]', False)
+        print(name, description, time_to_cook, image, igs)
         
     return render(request, 'recipes/create.html')

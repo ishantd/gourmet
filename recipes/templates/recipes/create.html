@@ -14,10 +14,10 @@
             <div class="container content">
                 <div class="row">
             <div class="col-12 text-center">
-                <h3>Create Recipe</h3>
+                <h2>Create Recipe</h2>
             </div>
-            <div class="col-6">
-                <h5>Basic Info</h5>
+            <div class="col-12">
+                <h4>Basic Info</h4>
 
                 <form id="basic-form" method="POST" enctype="multipart/form-data" action="{% url 'create-recipes' %}">
                     {% csrf_token %}
@@ -39,6 +39,38 @@
                         <label for="name">Image</label>
                         <input type="file" name="image" class="form-control" id="image">
                     </div>
+                    <hr class="space m">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4> <span style="margin-right: 10px">Ingredients</span> <button class="btn btn-sm " id="add-ig" type="button"><i class="im-atom"></i>Add Ingredient</button>  </h4>
+                        </div>
+
+                        <div class="col-12" id="ig-box">
+                            <div class="row ig" id="ig-1">
+                                <div class="col-md-2">
+                                    <button class="btn btn-sm del-btn" id="dl-ig-1" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="ig_names[]" id="ig-name-1" placeholder="Ingredient Name">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="ig_value[]" id="ig-value-1" placeholder="Ingredient Value">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" name="ig_unit[]" id="ig-unit-1" placeholder="Ingredient Unit">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+                    <hr class="space m">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
@@ -46,12 +78,11 @@
             </div>
         </div>
 
-    <div class="container" style="height: 100vh; padding-top: 30vh;">
-        
-    </div>
+
 
 {% endblock content %}
 
 
 {% block my_js %}
+<script src="{% static "recipes/js/create.js" %}"></script>
 {% endblock my_js %}
