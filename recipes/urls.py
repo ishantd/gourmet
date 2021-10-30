@@ -4,5 +4,6 @@ from django.urls import path
 
 urlpatterns = [
     path('create/', views.create_recipe, name='create-recipes'),
-    path('read/', views.read_recipe, name='read-recipes')
+    path('read/', views.read_recipe, name='read-recipes'),
+    path('read/single/<int:id>/', views.read_recipe_single, name='read-single-recipe')
 ]

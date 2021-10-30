@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from recipes.models import Ingredient, Recipe, Step
 
-
+@login_required(login_url='/user/login/')
 def create_recipe(request):
     if request.method == 'POST':
         name = request.POST.get('name', False)
@@ -15,6 +16,7 @@ def create_recipe(request):
         steps_to_cook = request.POST.getlist('sc_steps[]', False)        
         
         recipe = Recipe.objects.create(
+            user=request.user,
             name=name,
             description=description,
             time_to_cook=time_to_cook,
@@ -40,3 +42,10 @@ def read_recipe(request):
     context = {"recipes": recipes}
     
     return render(request, 'recipes/read.html', context)
+
+def read_recipe_single(request, id):
+    recipe = Recipe.objects.get(id=id)
+    
+    context = {"recipe": recipe}
+    
+    return render(request, 'recipes/read_single.html', context)

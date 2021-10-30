@@ -1,0 +1,66 @@
+{% extends 'recipes/base.html' %}
+
+{% load static %}
+
+{% block my_css %}
+{% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> {% endcomment %}
+{% endblock my_css %}
+
+{% block content %}
+    
+    {% include 'recipes/includes/_header.html' with heading=recipe.name ttc=recipe.time_to_cook %}
+
+    <div class="section-two-blocks blocks-right bg-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="img-box"><img src="{{recipe.image.url}}" alt="" class="img-fluid"></a>
+                </div>
+                <div class="col-md-6 section-bg">
+                    <div class="content">
+                        <hr class="space s">
+                        <div class="tag-row">
+                            <span><i class="fa fa-calendar"></i> <a href="#">{{recipe.created_on}}</a></span>
+                            <span><i class="fa fa-calendar"></i> <a href="#">Last Updated</a> - <a href="#">{{recipe.last_updated}}</a></span>
+                        </div>
+                        <hr class="space m">
+                        <p>
+                            {{recipe.description}}
+                        </p>
+                        <hr class="space m">
+
+                            <h3>Ingredients</h3>
+
+                            <ul>
+                                {% for ig in recipe.ingredients.all %}
+                                <li>{{forloop.counter}}. {{ig.name}} - {{ig.value}}{{ig.unit}} </li>                            
+                                {% endfor %}
+                            </ul>
+
+                            <h3>Steps To Cook</h3>
+
+                            <ul>
+                                {% for s in recipe.steps.all %}
+                                <li>{{s.serial_number}}. {{s.step_to_cook}} </li>                            
+                                {% endfor %}
+                            </ul>
+
+                        <hr class="space s">
+                        <div class="btn-group social-group">
+                            <a target="_blank" href="#" data-social="share-facebook" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook"><i class="fa fa-facebook text-s circle"></i></a>
+                            <a target="_blank" href="#" data-social="share-twitter" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="fa fa-twitter text-s circle"></i></a>
+                            <a target="_blank" href="#" data-social="share-google" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google+"><i class="fa fa-google-plus text-s circle"></i></a>
+                            <a target="_blank" href="#" data-social="share-linkedin" data-toggle="tooltip" data-placement="top" title="" data-original-title="LinkedIn"><i class="fa fa-linkedin text-s circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+{% endblock content %}
+
+
+{% block my_js %}
+
+{% endblock my_js %}

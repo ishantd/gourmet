@@ -3,7 +3,7 @@
         <div class="img-box">
             <img src="{{r.image.url}}" alt="">
         </div>
-        <a href="#" class="caption-bg img-box">
+        <a href="{% url 'read-single-recipe' r.id %}" class="caption-bg img-box">
             <div class="caption">
                 <div class="inner">
                     <h2>{{r.name}}</h2>
