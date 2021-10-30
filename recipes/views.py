@@ -26,9 +26,17 @@ def create_recipe(request):
             recipe.ingredients.add(ingredient)
         
         for i in range(len(steps_to_cook)):
-            s = Step.objects.get_or_create(serial_number=i+1, step_to_cook=steps_to_cook[i])
+            s, s_created = Step.objects.get_or_create(serial_number=i+1, step_to_cook=steps_to_cook[i])
             recipe.steps.add(s)
         
         recipe.save()      
         
     return render(request, 'recipes/create.html')
+
+def read_recipe(request):
+    recipes = Recipe.objects.all()
+    
+
+    context = {"recipes": recipes}
+    
+    return render(request, 'recipes/read.html', context)
