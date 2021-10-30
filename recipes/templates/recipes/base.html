@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,23 +21,20 @@
     <link rel="stylesheet" href="{% static "home/js/social.stream.css"%}">
     <link rel="icon" href="{% static "home/images/favicon.png"%}">
     <link rel="stylesheet" href="{% static "home/css/skin.css"%}">
+    <link rel="stylesheet" href="{% static "recipes/css/main.css"%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {% block my_css %}
     {% endblock my_css %}
 </head>
-<body>
-
+<body class="home">
     <div class="footer-parallax-container">
-
-    {% include 'home/includes/_navbar.html' %}
-
-    
         
+        {% include 'recipes/includes/_navbar.html' %}
+        
+        {% block content %}
+        {% endblock content %}
     </div>
-    <i class="scroll-top scroll-top-mobile show fa fa-sort-asc"></i>
-
     {% include 'home/includes/_footer.html' %}
-    
         <link rel="stylesheet" href="{% static "home/js/iconsmind/line-icons.min.css"%}">
         <script async src="{% static "home/js/bootstrap/js/bootstrap.min.js"%}"></script>
         <script type="text/javascript" src="{% static "home/js/imagesloaded.min.js"%}"></script>
@@ -54,9 +51,7 @@
         <script type="text/javascript" src="{% static "home/js/social.stream.min.js"%}"></script>
         <script src="{% static "home/js/php/datepicker.min.js"%}"></script>
         <script src="{% static "home/js/smooth.scroll.min.js"%}"></script>
-      
-
-        {% block my_js %}
-        {% endblock my_js %}
 </body>
+
+<!-- Mirrored from templates.framework-y.com/gourmet/pages/about-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Oct 2021 00:43:13 GMT -->
 </html>
