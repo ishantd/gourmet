@@ -51,6 +51,16 @@
                             <a target="_blank" href="#" data-social="share-google" data-toggle="tooltip" data-placement="top" title="" data-original-title="Google+"><i class="fa fa-google-plus text-s circle"></i></a>
                             <a target="_blank" href="#" data-social="share-linkedin" data-toggle="tooltip" data-placement="top" title="" data-original-title="LinkedIn"><i class="fa fa-linkedin text-s circle"></i></a>
                         </div>
+
+                        <hr class="space s">
+                        {% if recipe.user == request.user %}
+                        <div class="btn-group">
+                            <a href="{% url 'update-single-recipe' recipe.id %}" class="circle-button btn btn-sm anima-button"><i class="im-bread"></i>Edit</a>
+                            <a href="{% url 'delete-single-recipe' recipe.id %}" class="circle-button btn btn-sm anima-button"><i class="im-bug"></i>Delete</a>
+                        </div>
+                            
+                        {% endif %}
+                            
                     </div>
                 </div>
             </div>
