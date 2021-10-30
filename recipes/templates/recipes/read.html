@@ -10,11 +10,11 @@
     
     {% include 'recipes/includes/_header.html' with heading="Read Recipes" %}
 
-    <div class="section-bg-image parallax-window" data-bleed="0" data-natural-height="2500" data-natural-width="1920" data-parallax="scroll" data-image-src="../images/hd-portrait-2.jpg">
+    <div class="section-bg-image parallax-window" data-bleed="0" data-natural-height="2500" data-natural-width="1920" data-parallax="scroll" data-image-src="{% static "home/images/hd-portrait.jpg"%}">
             <div class="container content">
                 <div class="row">
                     <div class="col-md-9">
-                        <h3 id="dishes" class="text-black">Recipes</h3>
+                        <h3 id="dishes" class="text-white" style="color:white;">Recipes</h3>
                         <div class="maso-list list-sm-6 col-margins">
                             <div class="maso-box row" data-lightbox-anima="fade-top">
 
@@ -30,7 +30,7 @@
                         <hr class="space">
                     </div>
                     <div class="col-md-3">
-                        <div class="fixed-area" data-bottom="150" style="width: 262.5px;">
+                        <div class="fixed-area" data-bottom="150">
                             <aside id="menu" class="sidebar mi-menu">
                                 <nav class="sidebar-nav">
                                     <ul class="side-menu">
