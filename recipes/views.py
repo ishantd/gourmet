@@ -71,7 +71,8 @@ def update_recipe_single(request, id):
         recipe.name = name
         recipe.description = description
         recipe.time_to_cook = time_to_cook
-        recipe.image = image
+        if image:
+            recipe.image = image
         recipe.save()
         
         recipe.ingredients.clear()
