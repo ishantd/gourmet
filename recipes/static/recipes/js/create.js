@@ -1,5 +1,6 @@
 console.log("CHEKC")
 window.ingredients = 1
+window.sc = 1
 $("#add-ig").click(function () {
     window.ingredients += 1
     var row = `
@@ -24,6 +25,23 @@ $("#add-ig").click(function () {
     `
 
     var ig_box = $("#ig-box");
+    ig_box.append(row);
+});
+
+$("#add-sc").click(function () {
+    window.sc += 1
+    var row = `
+        <div class="row sc" id="sc-${window.sc}">
+            <div class="col-md-2">
+                <button class="btn btn-sm del-btn del-btn-sc" id="dl-sc-${window.sc}" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="sc_steps[]" id="sc-step-${window.sc}" placeholder="Step To Cook">
+            </div>
+        </div>
+    `
+
+    var ig_box = $("#sc-box");
     ig_box.append(row);
 });
 
