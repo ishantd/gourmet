@@ -19,7 +19,7 @@
             <div class="col-12">
                 <h4>Basic Info</h4>
 
-                <form id="basic-form" method="POST" enctype="multipart/form-data" action="{% url 'create-recipes' %}">
+                <form id="basic-form" method="POST" enctype="multipart/form-data" action="{% url 'update-single-recipe' recipe.id %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea type="text" name="description" class="form-control" id="description" value="{{recipe.description}}"></textarea>
+                        <textarea type="text" name="description" class="form-control" id="description" >{{recipe.description}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="name">Time to Cook</label>
@@ -53,15 +53,15 @@
                                     <button class="btn btn-sm del-btn del-btn-ig" id="dl-ig-{{forloop.counter}}" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" name="ig_names[]" id="ig-name-{{forloop.counter}}" placeholder="Ingredient Name">
+                                    <input type="text" class="form-control" value="{{ig.name}}" name="ig_names[]" id="ig-name-{{forloop.counter}}" placeholder="Ingredient Name">
                                 </div>
 
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" name="ig_value[]" id="ig-value-{{forloop.counter}}" placeholder="Ingredient Value">
+                                    <input type="text" class="form-control" value="{{ig.value}}" name="ig_value[]" id="ig-value-{{forloop.counter}}" placeholder="Ingredient Value">
                                 </div>
 
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" name="ig_unit[]" id="ig-unit-{{forloop.counter}}" placeholder="Ingredient Unit">
+                                    <input type="text" class="form-control" value="{{ig.unit}}" name="ig_unit[]" id="ig-unit-{{forloop.counter}}" placeholder="Ingredient Unit">
                                 </div>
                             </div>
                         {% endfor %}
@@ -78,14 +78,16 @@
 
                         <div class="col-12" id="sc-box">
 
-                            <div class="row sc" id="sc-1">
+                        {% for sc in recipe.steps.all %}
+                            <div class="row sc" id="sc-{{forloop.counter}}">
                                 <div class="col-md-2">
                                     <button class="btn btn-sm del-btn del-btn-sc" id="dl-sc-1" type="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </div>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" name="sc_steps[]" id="sc-step-1" placeholder="Step To Cook">
+                                    <input type="text" class="form-control" value="{{sc.step_to_cook}}" name="sc_steps[]" id="sc-step-1" placeholder="Step To Cook">
                                 </div>
                             </div>
+                        {% endfor %}
                         </div>
                     </div>
                     

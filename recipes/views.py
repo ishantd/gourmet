@@ -66,7 +66,7 @@ def update_recipe_single(request, id):
         ig_names = request.POST.getlist('ig_names[]', False)
         ig_value = request.POST.getlist('ig_value[]', False)
         ig_unit = request.POST.getlist('ig_unit[]', False)
-        steps_to_cook = request.POST.getlist('sc_steps[]', False)        
+        steps_to_cook = request.POST.getlist('sc_steps[]', False)    
         
         recipe.name = name
         recipe.description = description
@@ -85,10 +85,11 @@ def update_recipe_single(request, id):
             s, s_created = Step.objects.get_or_create(serial_number=i+1, step_to_cook=steps_to_cook[i])
             recipe.steps.add(s)
         
-        recipe.save()      
+        recipe.save()
+        return redirect('read-recipes')   
     
     context = {"recipe": recipe}
-    return render(request, 'recipes/update_single.html', context)
+    return render(request, 'recipes/update.html', context)
     
 
 def delete_recipe_single(request, id):
