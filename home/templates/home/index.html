@@ -14,146 +14,29 @@
                 <hr class="space" />
                 <div class="flexslider carousel outer-navs visible-dir-nav white" data-options="minWidth:200,itemMargin:30,numItems:3,controlNav:false,directionNav:true">
                     <ul class="slides">
+                    {% for r in recipes %}
                         <li>
                             <div class="img-box adv-img adv-img-half-content shadow-1" data-anima="fade-left" data-trigger="hover">
                                 <i class="fa fa-camera-retro anima"></i>
                                 <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-9.jpg"%}" alt="" />
+                                    <img src="{{r.image.url}}" alt="" />
                                 </a>
                                 <div class="caption">
-                                    <h2>Beef Steack</h2>
-                                    <span class="extra-content">$ 19.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
+                                    <h2>{{r.name}}</h2>
+                                    <p>{{r.description}}</p>
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content shadow-1" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-10.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Tomato pasta</h2>
-                                    <span class="extra-content">$ 15.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content shadow-1" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-11.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Pink shrimps</h2>
-                                    <span class="extra-content">$ 28.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-12.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Eggs plate</h2>
-                                    <span class="extra-content">$ 9.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
+                    {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
         <div class="section-bg-image white" style="background-image:url({% static 'home/images/hd-portrait.jpg' %})">
             <div class="container content">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="title-base text-left">
-                            <hr />
-                            <h2>Book a table</h2>
-                            <p>Book a table in 1 minute</p>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <script type='text/javascript' src='http://www.opentable.com/widget/reservation/loader?rid=347401&amp;domain=com&amp;type=standard&amp;theme=wide&amp;lang=en&amp;overlay=false&amp;iframe=false'></script>
-                    </div>
-                </div>
+
                 <hr class="space l" />
-                <div class="flexslider carousel outer-navs" data-options="minWidth:200,itemMargin:15,numItems:4,controlNav:false,directionNav:true">
-                    <ul class="slides">
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-13.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Beef Steack</h2>
-                                    <span class="extra-content">$ 19.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-14.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Tomato pasta</h2>
-                                    <span class="extra-content">$ 15.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-15.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Pink shrimps</h2>
-                                    <span class="extra-content">$ 28.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-16.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Eggs plate</h2>
-                                    <span class="extra-content">$ 9.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-box adv-img adv-img-half-content" data-anima="fade-left" data-trigger="hover">
-                                <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
-                                    <img src="{% static "home/images/gallery/long-17.jpg"%}" alt="" />
-                                </a>
-                                <div class="caption">
-                                    <h2>Pink shrimps</h2>
-                                    <span class="extra-content">$ 28.00</span>
-                                    <p>Beef of the Dolomites, extra virgin olive oil, salt, rosemary, potatoes, tomatos.</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+
                 <hr class="space" />
                 <div class="title-base">
                     <hr />

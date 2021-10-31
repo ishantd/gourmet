@@ -14,7 +14,7 @@
             <div class="container content">
                 <div class="row">
                     <div class="col-md-9">
-                        <h3 id="dishes" class="text-white" style="color:white;">Recipes</h3>
+                        <h3 id="dishes" class="text-white" style="color:white;">Recipes <a href="{% url 'create-recipes' %}" class="btn btn-sm" style="margin-left: 30px;">Create Recipe</a> </h3>
                         <div class="maso-list list-sm-6 col-margins">
                             <div class="maso-box row" data-lightbox-anima="fade-top">
 
@@ -32,7 +32,9 @@
                     <div class="col-md-3">
                         <div class="fixed-area" data-bottom="150">
                             <aside id="menu" class="sidebar mi-menu">
-                                <input type="text" name="" id="autocomplete">
+
+                            <h3 style="color: white;">Search for a Recipe</h3>
+                                <input type="text" name="" placeholder="Search..." id="autocomplete">
                             </aside>
                         </div>
                     </div>
