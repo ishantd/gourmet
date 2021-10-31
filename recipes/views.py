@@ -1,6 +1,6 @@
 from datetime import time
 from django.shortcuts import render, redirect
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 
 from recipes.models import Ingredient, Recipe, Step
@@ -38,12 +38,29 @@ def create_recipe(request):
     return render(request, 'recipes/create.html')
 
 def read_recipe(request):
+    context = {}
     recipes = Recipe.objects.all()
     
-
-    context = {"recipes": recipes}
+    api = request.GET.get('api', False)
+    context["recipes"] = recipes
     
+    if api:
+        data = []
+        for r in recipes:
+            ig_names = [ig.name for ig in r.ingredients.all()]
+            ig_names_string = ",".join(ig_names)
+            full_string = f'{r.name} - {ig_names_string}'
+            data.append(full_string)
+        return JsonResponse({"status": "okay", "data": data}, status=200)
     return render(request, 'recipes/read.html', context)
+
+def get_id(request):
+    name = request.GET.get('string', False)
+    rname = name.split('-')[0].strip()
+    
+    recipe = Recipe.objects.get(name=rname)
+    
+    return JsonResponse({"id": recipe.id}, status=200)
 
 def read_recipe_single(request, id):
     recipe = Recipe.objects.get(id=id)
@@ -94,3 +111,4 @@ def update_recipe_single(request, id):
 def delete_recipe_single(request, id):
     recipe = Recipe.objects.get(id=id).delete()
     return redirect("read-recipes")
+

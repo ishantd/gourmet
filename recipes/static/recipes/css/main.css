@@ -15,3 +15,25 @@ input {
 .sc {
  margin-top: 30px;
 }
+
+#autocomplete {
+    color: black !important;
+    font-weight: bold;
+    width: 300px;
+}
+
+.tt-input {
+    width: 300px;
+}
+
+.tt-highlight {
+    background-color: rgb(222, 222, 252);
+}
+
+.tt-hint {
+    width: 300px;
+}
+
+.tt-menu {
+    background: white;
+}
