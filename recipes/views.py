@@ -5,11 +5,7 @@ from django.http.response import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 
 from recipes.models import Ingredient, Recipe, Step
-        
-from algoliasearch.search_client import SearchClient
 
-client = SearchClient.create(settings.ALGOLIA_APP_ID, settings.ALGOLIA_ADMIN_KEY)
-index = client.init_index('recipes')
 
 @login_required(login_url='/user/login/')
 def create_recipe(request):
@@ -40,20 +36,6 @@ def create_recipe(request):
             recipe.steps.add(s)
         
         recipe.save()      
-        
-
-        Ingredients = ",".join([ig.name for ig in recipe.ingredients.all()])
-        
-        data = {
-            "objectID": recipe.id,
-            "name": recipe.name,
-            "image_url": recipe.image.url,
-            "ingredients": Ingredients
-        }
-        res = index.save_objects([
-            data
-        ])
-        
     return render(request, 'recipes/create.html')
 
 def read_recipe(request):
@@ -120,19 +102,7 @@ def update_recipe_single(request, id):
         for i in range(len(steps_to_cook)):
             s, s_created = Step.objects.get_or_create(serial_number=i+1, step_to_cook=steps_to_cook[i])
             recipe.steps.add(s)
-        
-        ingredients = ",".join([ig.name for ig in recipe.ingredients.all()])
-        
-        data = {
-            "objectID": recipe.id,
-            "name": recipe.name,
-            "image_url": recipe.image.url,
-            "ingredients": ingredients
-        }
-        res = index.partial_update_objects([
-            data
-        ])
-        
+                
         recipe.save()
         return redirect('read-recipes')   
     
