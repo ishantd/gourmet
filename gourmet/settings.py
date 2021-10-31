@@ -2,21 +2,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(os.path.join(BASE_DIR, 'gourmet/.env'))
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.getenv("DEBUG")=="1" else False
 
 ALLOWED_HOSTS = (os.getenv("ALLOWED_HOSTS")).split(",")
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,37 +61,29 @@ TEMPLATES = [
 WSGI_APPLICATION = 'gourmet.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE"),
-        "NAME": os.environ.get("SQL_DATABASE"),
-        "USER": os.environ.get("SQL_USER"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD"),
-        "HOST": os.environ.get("SQL_HOST"),
-        "PORT": os.environ.get("SQL_PORT"),
+if not DEBUG:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": os.environ.get("SQL_ENGINE"),
+            "NAME": os.environ.get("SQL_DATABASE"),
+            "USER": os.environ.get("SQL_USER"),
+            "PASSWORD": os.environ.get("SQL_PASSWORD"),
+            "HOST": os.environ.get("SQL_HOST"),
+            "PORT": os.environ.get("SQL_PORT"),
+        }
+    }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
+
 ]
 
 
@@ -128,10 +116,3 @@ AWS_SECRET_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY_SECRET")
 AWS_SES_REGION_NAME = 'ap-south-1'
 AWS_DEFAULT_REGION_NAME = 'ap-south-1'
 AWS_SES_REGION_ENDPOINT = 'email.ap-south-1.amazonaws.com'
-
-
-ALGOLIA_APP_ID=os.getenv("ALGOLIA_APP_ID")
-ALGOLIA_SEARCH_KEY=os.getenv("ALGOLIA_SEARCH_KEY")
-ALGOLIA_ADMIN_KEY=os.getenv("ALGOLIA_ADMIN_KEY")
-ALGOLIA_USAGE_KEY=os.getenv("ALGOLIA_USAGE_KEY")
-ALGOLIA_MONITORING_KEY=os.getenv("ALGOLIA_MONITORING_KEY")
