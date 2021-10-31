@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 from accounts.models import UserProfile
 
@@ -22,3 +23,4 @@ class Recipe(models.Model):
     image = models.ImageField(upload_to='recipes/', null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     last_updated = models.DateTimeField(auto_now=True, blank=True, null=True)
+
