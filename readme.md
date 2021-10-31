@@ -1,5 +1,22 @@
 # SETUP
 
+
+## Setup Docker for LOCAL SETUP
+
+- Clone the repository <br/>
+  `git clone https://github.com/SKID-Fintech/mcro-backend.git`
+
+- Verify that your docker service is running and configured <br/>
+  `docker-compose run hello-world`
+
+- Start development server for all services <br/>
+  `docker-compose up`
+
+- Build the containers and processes required to start Docker (NOTE: This command should be used only once, when retrying to build the docker image/container please use `docker-compose up --build`)<br/>
+  `docker-compose build`
+
+NOTE: PLEASE ASK FOR .env FILE  CREDENTIALS TO RUN THE CODE
+
 #### Clone
 - [x] `git clone https://github.com/ishantd/portfolio.git`
 
