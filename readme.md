@@ -4,7 +4,7 @@
 ## Setup Docker for LOCAL SETUP
 
 - Clone the repository <br/>
-  `git clone https://github.com/SKID-Fintech/mcro-backend.git`
+  `git clone https://github.com/ishantd/gourmet.git`
 
 - Verify that your docker service is running and configured <br/>
   `docker-compose run hello-world`
