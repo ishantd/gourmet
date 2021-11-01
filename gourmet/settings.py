@@ -8,7 +8,7 @@ load_dotenv(os.path.join(BASE_DIR, 'gourmet/.env'))
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True if os.getenv("DEBUG")=="1" else False
+DEBUG = True if os.getenv("DEBUG")=="1" or os.getenv("DEBUG") == 1 else False
 
 ALLOWED_HOSTS = (os.getenv("ALLOWED_HOSTS")).split(",")
 
