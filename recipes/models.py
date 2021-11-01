@@ -6,7 +6,7 @@ from accounts.models import UserProfile
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=200, null=True)
-    value = models.IntegerField(null=True)
+    value = models.CharField(max_length=200, null=True)
     unit = models.CharField(max_length=200, null=True)
 
 class Step(models.Model):
