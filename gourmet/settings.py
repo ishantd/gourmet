@@ -124,6 +124,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST_USER = 'gourmet@bestpcprices.in'
+DEFAULT_FROM_EMAIL = 'gourmet@bestpcprices.in'
 EMAIL_BACKEND = 'django_ses.SESBackend'
 EMAIL_VALIDATION = False
 
