@@ -7,9 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, 'gourmet/.env'))
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-
+print(os.getenv("DEBUG"))
 DEBUG = True if os.getenv("DEBUG")=="1" or os.getenv("DEBUG") == 1 else False
-
+print(DEBUG)
 ALLOWED_HOSTS = (os.getenv("ALLOWED_HOSTS")).split(",")
 
 
