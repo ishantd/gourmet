@@ -36,6 +36,7 @@ def create_recipe(request):
             recipe.steps.add(s)
         
         recipe.save()      
+        return redirect('read-recipes')
     return render(request, 'recipes/create.html')
 
 def read_recipe(request):
