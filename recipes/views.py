@@ -44,6 +44,11 @@ def read_recipe(request):
     recipes = Recipe.objects.all()
     
     api = request.GET.get('api', False)
+    my = request.GET.get('my', False)
+    
+    if my:
+        recipes = recipes.filter(user=request.user)
+    
     context["recipes"] = recipes
     
     if api:

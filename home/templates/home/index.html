@@ -18,7 +18,7 @@
                         <li>
                             <div class="img-box adv-img adv-img-half-content shadow-1" data-anima="fade-left" data-trigger="hover">
                                 <i class="fa fa-camera-retro anima"></i>
-                                <a href="#" class="img-box lightbox anima-scale-up anima">
+                                <a href="{% url 'read-single-recipe' r.id %}" class="img-box lightbox anima-scale-up anima">
                                     <img src="{{r.image.url}}" alt="" />
                                 </a>
                                 <div class="caption">
