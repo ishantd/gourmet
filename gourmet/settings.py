@@ -61,15 +61,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'gourmet.wsgi.application'
 
 
-
-if not DEBUG:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
+if os.getenv("dockerv", False) == "yes":
     DATABASES = {
         "default": {
             "ENGINE": os.environ.get("SQL_ENGINE"),
@@ -80,7 +72,13 @@ else:
             "PORT": os.environ.get("SQL_PORT"),
         }
     }
-
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
 
