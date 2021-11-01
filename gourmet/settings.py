@@ -12,6 +12,24 @@ DEBUG = True if os.getenv("DEBUG")=="1" or os.getenv("DEBUG") == 1 else False
 print(DEBUG)
 ALLOWED_HOSTS = (os.getenv("ALLOWED_HOSTS")).split(",")
 
+if not DEBUG:
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn="https://fc6b28d9b4bb4aa180c76b71c34ffcbf@o1053756.ingest.sentry.io/6043186",
+        integrations=[DjangoIntegration()],
+
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
+
 
 
 INSTALLED_APPS = [
